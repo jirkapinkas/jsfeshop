@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://java.sun.com/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+
+	<f:metadata>
+		<f:event listener="#{userOrderManager.loadAllWithItems}" type="preRenderView" />
+	</f:metadata>
+
+	<ui:composition template="/template/template.xhtml">
+		<ui:param name="title" value="Orders" />
+		<ui:define name="content">
+
+			<h1>Orders:</h1>
+
+			<p:dataTable var="userOrder" value="#{userOrderManager.userOrders}">
+			
+				<p:column headerText="name">
+					#{userOrder.name}
+				</p:column>
+				
+				<p:column headerText="date">
+					#{userOrder.orderDate}
+				</p:column>
+				
+				<p:column headerText="ordered items">
+					<ui:repeat var="orderedItem" value="#{userOrder.orderedItems}">
+						#{orderedItem.item.name} #{orderedItem.quantity}x
+						<br />
+					</ui:repeat>
+				</p:column>
+			
+			</p:dataTable>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

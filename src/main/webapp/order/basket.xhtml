@@ -1,0 +1,85 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://java.sun.com/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+
+	<ui:composition template="/template/template.xhtml">
+		<ui:param name="title" value="Basket" />
+		<ui:define name="content">
+
+			<h1>Basket:</h1>
+
+			<h:form>
+
+				<p:contextMenu for="dt">
+					<p:menuitem value="Delete" update="dt" icon="ui-icon-close" actionListener="#{basket.removeSelected()}"/>
+				</p:contextMenu>
+
+				<p:dataTable var="oi" value="#{basket.items}" id="dt" selectionMode="single" selection="#{basket.selectedItem}" rowKey="#{oi.item.id}">
+					<p:column headerText="name">
+						#{oi.item.name}
+					</p:column>
+					<p:column headerText="quantity">
+						#{oi.quantity}
+					</p:column>
+				</p:dataTable>
+				
+				<br /><br />
+				
+				<p:panelGrid>
+					<p:row>
+						<p:column colspan="2">
+							<p:messages autoUpdate="true" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							name:
+						</p:column>
+						<p:column>
+							<p:inputText value="#{userOrderManager.userOrder.name}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							city:
+						</p:column>
+						<p:column>
+							<p:inputText value="#{userOrderManager.userOrder.city}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							street:
+						</p:column>
+						<p:column>
+							<p:inputText value="#{userOrderManager.userOrder.street}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							zip:
+						</p:column>
+						<p:column>
+							<p:inputText value="#{userOrderManager.userOrder.zip}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="2">
+							<p:commandButton action="#{userOrderManager.save}" value="Order items" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

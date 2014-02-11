@@ -1,0 +1,10 @@
+/*.ui-panelgrid tr td {
+	padding-right: 20px;
+}*/
+.form .ui-inputtext {
+	width: 98.5%;
+}
+
+.form tr, .form td, .form {
+     border: none;
+}

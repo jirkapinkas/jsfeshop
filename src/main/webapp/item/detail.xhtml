@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://java.sun.com/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+
+	<f:metadata>
+		<f:viewParam name="id" value="#{itemManager.item.id}" />
+		<f:event listener="#{itemManager.loadOne}" type="preRenderView" />
+	</f:metadata>
+
+	<ui:composition template="/template/template.xhtml">
+		<ui:param name="title" value="#{itemManager.item.name}" />
+		<ui:define name="content">
+
+			<h1>#{itemManager.item.name}</h1>
+
+			<h:outputText value="#{itemManager.item.description}" escape="false" />
+
+			price: #{itemManager.item.price}
+	
+			<br />
+			<br />
+
+			<h:form>
+			<p:growl autoUpdate="true" showDetail="true" life="2000" />
+				<p:panelGrid id="grid">
+					<p:row>
+						<p:column>
+							<p:messages showDetail="true" />
+							quantity: <p:inputText value="#{itemManager.quantity}" />
+							<p:commandButton value="Add to basket" action="#{itemManager.addItemToBasket()}" update="grid" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+
+
+</h:body>
+</html>

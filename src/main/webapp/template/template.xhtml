@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>${title}</title>
+</h:head>
+<h:body>
+
+<h:outputStylesheet library="css" name="default.css" />
+
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="south" size="50">
+			<center>&copy; Jiri Pinkas</center>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<p:dock position="top">
+				<p:menuitem value="Home" icon="/resources/images/home.png" url="/" />
+				<p:menuitem value="New item" icon="/resources/images/add.png" url="/item/edit.xhtml" />
+				<p:menuitem value="Basket" icon="/resources/images/basket.png" url="/order/basket.xhtml" />
+				<p:menuitem value="Orders" icon="/resources/images/orders.png" url="/order/orders.xhtml" />
+			</p:dock>
+			<ui:insert name="content">content</ui:insert>
+		</p:layoutUnit>
+
+	</p:layout>
+
+</h:body>
+</html>
