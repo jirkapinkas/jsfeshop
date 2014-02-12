@@ -14,4 +14,6 @@ public interface ItemService {
 	Item findOne(int id);
 
 	void save(Item item);
+	
+	void remove(int id);
 }

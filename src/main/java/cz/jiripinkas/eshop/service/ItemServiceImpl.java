@@ -33,4 +33,9 @@ public class ItemServiceImpl implements ItemService {
 		}
 	}
 
+	@Override
+	public void remove(int id) {
+		entityManager.remove(entityManager.find(Item.class, id));
+	}
+
 }

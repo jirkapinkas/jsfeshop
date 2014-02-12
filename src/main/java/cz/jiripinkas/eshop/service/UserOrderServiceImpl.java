@@ -49,4 +49,9 @@ public class UserOrderServiceImpl implements UserOrderService {
 		}
 	}
 
+	@Override
+	public void remove(int id) {
+		entityManager.remove(entityManager.find(UserOrder.class, id));
+	}
+
 }

@@ -17,5 +17,7 @@ public interface UserOrderService {
 	void save(UserOrder userOrder, Basket basket);
 
 	List<UserOrder> findAllWithItems();
+	
+	void remove(int id);
 
 }
