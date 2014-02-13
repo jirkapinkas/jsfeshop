@@ -22,9 +22,11 @@
 		<p:layoutUnit position="center">
 			<p:dock position="top">
 				<p:menuitem value="Home" icon="/resources/images/home.png" url="/" />
-				<p:menuitem value="New item" icon="/resources/images/add.png" url="/item/edit.xhtml" />
+				<p:menuitem value="New item" icon="/resources/images/add.png" url="/item/edit.xhtml" rendered="#{request.isUserInRole('users')}" />
 				<p:menuitem value="Basket" icon="/resources/images/basket.png" url="/order/basket.xhtml" />
-				<p:menuitem value="Orders" icon="/resources/images/orders.png" url="/order/orders.xhtml" />
+				<p:menuitem value="Orders" icon="/resources/images/orders.png" url="/order/orders.xhtml" rendered="#{request.isUserInRole('users')}" />
+				<p:menuitem value="Sign in" icon="/resources/images/key-icon.png" url="/order/orders.xhtml" rendered="#{request.remoteUser eq null}" />
+				<p:menuitem value="Sign out" icon="/resources/images/exit.png" url="/logout" rendered="#{request.remoteUser ne null}" />
 			</p:dock>
 			<ui:insert name="content">content</ui:insert>
 		</p:layoutUnit>

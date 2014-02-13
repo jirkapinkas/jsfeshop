@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://java.sun.com/jsf/passthrough"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+
+	<ui:composition template="/template/template.xhtml">
+		<ui:param name="title" value="index page" />
+		<ui:define name="content">
+
+			<h1>Login:</h1>
+
+			<form method="post" action="j_security_check">
+				<p:panelGrid>
+					<p:row>
+						<p:column>
+							username:
+						</p:column>
+						<p:column>
+							<p:inputText id="j_username" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							password:
+						</p:column>
+						<p:column>
+							<p:password id="j_password" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="2">
+							<button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+								<span class="ui-button-text ui-c">Sign in</span>
+							</button>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</form>
+
+		</ui:define>
+	</ui:composition>
+
+
+</h:body>
+</html>
