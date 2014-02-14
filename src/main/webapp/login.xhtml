@@ -15,7 +15,7 @@
 
 			<h1>Login:</h1>
 
-			<form method="post" action="j_security_check">
+			<h:form id="login" onsubmit="document.getElementById('login').action='j_security_check';" prependId="false">
 				<p:panelGrid>
 					<p:row>
 						<p:column>
@@ -35,13 +35,11 @@
 					</p:row>
 					<p:row>
 						<p:column colspan="2">
-							<button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
-								<span class="ui-button-text ui-c">Sign in</span>
-							</button>
+							<p:commandButton value="Sign in" ajax="false" />
 						</p:column>
 					</p:row>
 				</p:panelGrid>
-			</form>
+			</h:form>
 
 		</ui:define>
 	</ui:composition>
