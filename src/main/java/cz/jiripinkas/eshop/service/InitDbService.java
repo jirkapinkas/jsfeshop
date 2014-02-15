@@ -25,10 +25,12 @@ public class InitDbService {
 	@PostConstruct
 	public void init() {
 		System.out.println("*** START INIT DATABASE ***");
-		Item itemJavaBook = constructItem("Java book", "Learn how to use Java in 21 days", 300);
+		Item itemJavaBook = constructItem("Java book",
+				"Learn how to use Java in 21 days", 300);
 		itemService.save(itemJavaBook);
 
-		Item itemIntellijIdea = constructItem("IntelliJ Idea licence", "single developer licence", 9000);
+		Item itemIntellijIdea = constructItem("IntelliJ Idea licence",
+				"single developer licence", 9000);
 		itemService.save(itemIntellijIdea);
 
 		Basket basket = new Basket();

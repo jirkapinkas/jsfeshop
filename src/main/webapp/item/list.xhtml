@@ -20,16 +20,50 @@
 
 			<h1>Items:</h1>
 
-			<p:dataTable var="item" value="#{itemManager.items}">
-				<p:column headerText="name">
-					<h:link outcome="/item/detail" value="#{item.name}">
-						<f:param name="id" value="#{item.id}" />
-					</h:link>
-				</p:column>
-				<p:column headerText="price">
+			<h:form>
+
+				<p:contextMenu for="items">
+					<p:menuitem value="Detail" update="display" icon="ui-icon-search"
+						oncomplete="PF('itemDialog').show()" />
+					<p:menuitem value="Delete" update="items" icon="ui-icon-close"
+						actionListener="#{itemManager.removeSelected()}" />
+				</p:contextMenu>
+
+				<p:dataTable var="item" value="#{itemManager.items}" id="items"
+					selectionMode="single" selection="#{itemManager.item}"
+					rowKey="#{item.id}">
+					<p:column headerText="name">
+						<h:link outcome="/item/detail" value="#{item.name}">
+							<f:param name="id" value="#{item.id}" />
+						</h:link>
+					</p:column>
+					<p:column headerText="price">
 					#{item.price}
 				</p:column>
-			</p:dataTable>
+				</p:dataTable>
+
+				<p:dialog header="Item Detail" widgetVar="itemDialog"
+					resizable="false" width="400" showEffect="clip" hideEffect="fold"
+					id="dialog">
+
+					<h:panelGrid id="display" columns="2" cellpadding="4">
+
+						<h:outputText value="Name:" />
+						<h:outputText value="#{itemManager.item.name}"
+							style="font-weight:bold" />
+
+						<h:outputText value="Description:" />
+						<h:outputText value="#{itemManager.item.description}"
+							style="font-weight:bold" />
+
+						<h:outputText value="Price:" />
+						<h:outputText value="#{itemManager.item.price}"
+							style="font-weight:bold" />
+
+					</h:panelGrid>
+				</p:dialog>
+
+			</h:form>
 
 		</ui:define>
 	</ui:composition>

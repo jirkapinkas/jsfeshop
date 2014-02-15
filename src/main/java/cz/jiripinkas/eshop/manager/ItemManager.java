@@ -36,9 +36,17 @@ public class ItemManager {
 		quantity = 1;
 	}
 
+	
+	public void removeSelected() {
+		itemService.remove(item.getId());
+	}
+
 	public void addItemToBasket() {
 		basket.add(item, quantity);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Result:", "Item added to basket"));
+		FacesContext.getCurrentInstance().addMessage(
+				null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Result:",
+						"Item added to basket"));
 	}
 
 	public int getQuantity() {
@@ -64,7 +72,10 @@ public class ItemManager {
 	public void save() {
 		itemService.save(item);
 		item = new Item();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Result:", "Item saved"));
+		FacesContext.getCurrentInstance().addMessage(
+				null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Result:",
+						"Item saved"));
 	}
 
 	public Item getItem() {

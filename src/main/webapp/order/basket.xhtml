@@ -17,10 +17,13 @@
 			<h:form>
 
 				<p:contextMenu for="dt">
-					<p:menuitem value="Delete" update="dt" icon="ui-icon-close" actionListener="#{basket.removeSelected()}"/>
+					<p:menuitem value="Delete" update="dt" icon="ui-icon-close"
+						actionListener="#{basket.removeSelected()}" />
 				</p:contextMenu>
 
-				<p:dataTable var="oi" value="#{basket.items}" id="dt" selectionMode="single" selection="#{basket.selectedItem}" rowKey="#{oi.item.id}">
+				<p:dataTable var="oi" value="#{basket.items}" id="dt"
+					selectionMode="single" selection="#{basket.selectedItem}"
+					rowKey="#{oi.item}">
 					<p:column headerText="name">
 						#{oi.item.name}
 					</p:column>
@@ -28,13 +31,18 @@
 						#{oi.quantity}
 					</p:column>
 				</p:dataTable>
-				
-				<br /><br />
-				
-				<p:panelGrid>
+
+			</h:form>
+
+			<br />
+			<br />
+
+			<h:form>
+
+				<p:panelGrid id="grid">
 					<p:row>
 						<p:column colspan="2">
-							<p:messages autoUpdate="true" />
+							<p:messages />
 						</p:column>
 					</p:row>
 					<p:row>
@@ -43,6 +51,15 @@
 						</p:column>
 						<p:column>
 							<p:inputText value="#{userOrderManager.userOrder.name}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							order date:
+						</p:column>
+						<p:column>
+							<p:calendar pattern="dd.MM.yyyy"
+								value="#{userOrderManager.userOrder.orderDate}" />
 						</p:column>
 					</p:row>
 					<p:row>
@@ -71,7 +88,8 @@
 					</p:row>
 					<p:row>
 						<p:column colspan="2">
-							<p:commandButton action="#{userOrderManager.save}" value="Order items" />
+							<p:commandButton action="#{userOrderManager.save}"
+								value="Order items" update="grid" />
 						</p:column>
 					</p:row>
 				</p:panelGrid>

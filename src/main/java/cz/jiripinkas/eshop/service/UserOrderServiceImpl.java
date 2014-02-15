@@ -54,4 +54,11 @@ public class UserOrderServiceImpl implements UserOrderService {
 		entityManager.remove(entityManager.find(UserOrder.class, id));
 	}
 
+	@Override
+	public int count() {
+		return ((Long) entityManager
+				.createQuery("select count(u) from UserOrder u")
+				.getSingleResult()).intValue();
+	}
+
 }

@@ -20,4 +20,5 @@ public interface UserOrderService {
 	
 	void remove(int id);
 
+	int count();
 }

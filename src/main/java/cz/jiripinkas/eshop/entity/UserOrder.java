@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "USER_ORDER")
@@ -23,6 +24,7 @@ public class UserOrder implements Serializable {
 	@Column(name = "USER_ORDER_ID")
 	private Integer id;
 
+	@NotNull(message="{emptyName}")
 	private String name;
 
 	private String street;

@@ -37,7 +37,10 @@ public class UserOrderManager {
 		userOrderService.save(userOrder, basket);
 		basket.clear();
 		userOrder = new UserOrder();
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Order saved", null));
+		FacesContext.getCurrentInstance().addMessage(
+				null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Order saved",
+						null));
 	}
 
 	public void loadAll() {
